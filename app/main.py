@@ -24,7 +24,8 @@ def main():
 
         if command.split(" ")[0] == "echo":
             command = command.split(" ")
-            sys.stdout.write(f"{command[1:]}\n")
+            message = " ".join(command[1:])
+            sys.stdout.write(f"{message}\n")
             continue
 
 

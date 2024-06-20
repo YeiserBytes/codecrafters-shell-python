@@ -44,6 +44,10 @@ def main():
 
         if command == busybox["echo"]:
             sys.stdout.write(f"{get_command_message(command_parts)}\n")
+            if os.path.isfile(command.split(" ")[0]):
+                    os.system(command)
+            else:
+                print(f"{command}: command not found")
         elif command == busybox["type"]:
             command_to_find = command_parts[1] if len(command_parts) > 1 else ""
             if is_builtin_command(command_to_find, busybox):

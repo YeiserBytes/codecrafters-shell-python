@@ -20,8 +20,8 @@ class CommandHandler:
         if command in ("exit", "exit 0"):
             return False  # Stop running
 
-        if command == os.path.basename(__file__):
-            self.execute_external_command(command_parts)
+        if command == "pwd":
+            self.pwd_command()
         elif command == self.busybox["echo"]:
             self.echo_command(args)
         elif command == self.busybox["type"]:
@@ -30,6 +30,9 @@ class CommandHandler:
             self.execute_external_command([command] + args)
 
         return True  # Continue running
+
+    def pwd_command(self):
+        sys.stdout.write(os.getcwd() + "\n")
 
     def execute_external_command(self, command_parts):
         try:

@@ -6,7 +6,12 @@ from .utils import *
 class Shell:
     def __init__(self):
         self.handler = CommandHandler(
-            busybox={"exit": "exit", "echo": "echo", "type": "type"},
+            busybox={
+                "exit": "exit",
+                "echo": "echo",
+                "type": "type",
+                "pwd": "pwd"
+            },
             scripts=["cat"],
             path=os.environ.get("PATH", ""),
         )

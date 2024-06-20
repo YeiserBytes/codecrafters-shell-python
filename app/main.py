@@ -2,7 +2,9 @@ import sys
 
 
 def main():
-    busybox = {}
+    busybox = [
+        "echo"
+    ]
 
     while True:
         # Uncomment this block to pass the first stage
@@ -19,6 +21,11 @@ def main():
         if command not in busybox:
             sys.stdout.write(f'{command}: command not found\n')
             continue
+
+        # Execute the command
+        for input in command.split(" "):
+            sys.stdout.write(f"{input[2]}\n")
+            sys.stdout.flush()
 
 
 

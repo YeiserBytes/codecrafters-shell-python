@@ -2,13 +2,19 @@ import sys
 
 
 def main():
-    # Uncomment this block to pass the first stage
-    sys.stdout.write("$ ")
-    sys.stdout.flush()
+    busybox = {}
 
-    # Wait for user input
-    command = input()
-    sys.stdout.write(f'{command}: command not found\n')
+    while True:
+        # Uncomment this block to pass the first stage
+        sys.stdout.write("$ ")
+        sys.stdout.flush()
+
+        # Wait for user input
+        command = input()
+
+        if command not in busybox:
+            sys.stdout.write(f'{command}: command not found\n')
+            continue
 
 
 if __name__ == "__main__":

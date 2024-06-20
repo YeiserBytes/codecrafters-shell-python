@@ -3,7 +3,12 @@ import sys
 
 def main():
     busybox = [
-        "echo"
+        "echo",
+        "type"
+    ]
+
+    scripts = [
+        "cat"
     ]
 
     while True:
@@ -22,12 +27,26 @@ def main():
             sys.stdout.write(f'{command}: command not found\n')
             continue
 
-        for command in busybox:
-            if command.split(" ")[0] == "echo":
-                command = command.split(" ")
-                message = " ".join(command[1:])
-                sys.stdout.write(f"{message}\n")
+        if command.split(" ")[0] == busybox[0]:
+            command = command.split(" ")
+            message = " ".join(command[1:])
+            sys.stdout.write(f"{message}\n")
+            continue
+
+        if command.split(" ")[0] == busybox[1]:
+            command = command.split(" ")
+            message = command[1]
+
+            if message in busybox:
+                sys.stdout.write(f"{message} is a shell builtin\n")
                 continue
+            elif message in scripts:
+                sys.stdout.write(f"{message} is /bin/{message}\n")
+                continue
+            else:
+                sys.stdout.write(f"{message}: command not found\n")
+                continue
+
 
 
 

@@ -45,7 +45,7 @@ def main():
                 sys.stdout.write(f"{message} is /bin/{message}\n")
                 continue
             else:
-                sys.stdout.write(f"{message}: command not found\n")
+                sys.stdout.write(f"{message}: not found\n")
                 continue
 
 

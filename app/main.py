@@ -25,7 +25,7 @@ def main():
         # Execute the command
         for input in command.split(" "):
             sys.stdout.write(f"{input[2]}\n")
-            sys.stdout.flush()
+            continue
 
 
 

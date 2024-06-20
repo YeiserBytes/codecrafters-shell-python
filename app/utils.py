@@ -22,6 +22,8 @@ class CommandHandler:
 
         if command == "pwd":
             self.pwd_command()
+        elif command == "cd":
+            self.cd_command(args)
         elif command == self.busybox["echo"]:
             self.echo_command(args)
         elif command == self.busybox["type"]:
@@ -33,6 +35,23 @@ class CommandHandler:
 
     def pwd_command(self):
         sys.stdout.write(os.getcwd() + "\n")
+
+    def cd_command(self, args):
+        if len(args) == 0:
+            target_directory = os.path.expanduser(
+                "~"
+            )  # Go to the home directory if no argument is given
+        else:
+            target_directory = args[0]
+
+        try:
+            os.chdir(target_directory)
+        except FileNotFoundError:
+            sys.stderr.write(f"cd: {target_directory}: No such file or directory\n")
+        except NotADirectoryError:
+            sys.stderr.write(f"cd: {target_directory}: Not a directory\n")
+        except PermissionError:
+            sys.stderr.write(f"cd: {target_directory}: Permission denied\n")
 
     def execute_external_command(self, command_parts):
         try:

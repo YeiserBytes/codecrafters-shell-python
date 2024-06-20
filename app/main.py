@@ -28,13 +28,13 @@ def main():
             sys.stdout.write(f'{command}: command not found\n')
             continue
 
-        if command.split(" ")[0] == busybox[0]:
+        if command.split(" ")[0] == busybox[1]:
             command = command.split(" ")
             message = " ".join(command[1:])
             sys.stdout.write(f"{message}\n")
             continue
 
-        if command.split(" ")[0] == busybox[1]:
+        if command.split(" ")[0] == busybox[2]:
             command = command.split(" ")
             message = command[1]
 

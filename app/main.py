@@ -23,11 +23,9 @@ def main():
             continue
 
         # Execute the command
-        for input in command.split(" "):
-            sys.stdout.write(f"{input[2]}\n")
+        for inp in command.split(" "):
+            sys.stdout.write(f"{inp[2]}\n")
             continue
-
-
 
 
 if __name__ == "__main__":

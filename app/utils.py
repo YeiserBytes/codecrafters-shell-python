@@ -42,7 +42,9 @@ class CommandHandler:
                 "~"
             )  # Go to the home directory if no argument is given
         else:
-            target_directory = args[0]
+            target_directory = args[0].replace(
+                "~", os.path.expanduser("~")
+            )  # Replace ~ with actual home directory path
 
         try:
             os.chdir(target_directory)

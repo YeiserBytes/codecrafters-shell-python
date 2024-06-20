@@ -3,6 +3,7 @@ import sys
 
 def main():
     busybox = [
+        "exit",
         "echo",
         "type"
     ]

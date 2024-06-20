@@ -22,11 +22,13 @@ def main():
             sys.stdout.write(f'{command}: command not found\n')
             continue
 
-        if command.split(" ")[0] == "echo":
-            command = command.split(" ")
-            message = " ".join(command[1:])
-            sys.stdout.write(f"{message}\n")
-            continue
+        for command in busybox:
+            if command.split(" ")[0] == "echo":
+                command = command.split(" ")
+                message = " ".join(command[1:])
+                sys.stdout.write(f"{message}\n")
+                continue
+
 
 
 if __name__ == "__main__":

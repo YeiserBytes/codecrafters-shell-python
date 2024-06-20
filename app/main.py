@@ -21,7 +21,7 @@ def main():
         command = input()
 
         # Exit the shell
-        if command == "exit" or command == "exit 0":
+        if command == busybox[0] or command == "exit 0":
             break
 
         if command.split(" ")[0] not in busybox:

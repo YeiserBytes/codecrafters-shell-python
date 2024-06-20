@@ -18,13 +18,13 @@ def main():
         if command == "exit" or command == "exit 0":
             break
 
-        if command not in busybox:
+        if command.split(" ")[0] not in busybox:
             sys.stdout.write(f'{command}: command not found\n')
             continue
 
-        # Execute the command
-        for inp in command.split(" "):
-            sys.stdout.write(f"{inp[2]}\n")
+        if command.split(" ")[0] == "echo":
+            command = command.split(" ")
+            sys.stdout.write(f"{command[1]}\n")
             continue
 
 

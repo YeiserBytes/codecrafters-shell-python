@@ -1,6 +1,8 @@
+from ast import arg
 import sys
 import os
 import subprocess
+import shlex
 
 
 class CommandHandler:
@@ -10,7 +12,7 @@ class CommandHandler:
         self.paths = path.split(":")
 
     def handle_command(self, command_input):
-        command_parts = command_input.split()
+        command_parts = shlex.split(command_input)
         if not command_parts:
             return True  # Continue running
 
@@ -25,6 +27,8 @@ class CommandHandler:
         elif command == "cd":
             self.cd_command(args)
         elif command == self.busybox["echo"]:
+            args = [arg.strip("'") for arg in args]
+
             self.echo_command(args)
         elif command == self.busybox["type"]:
             self.type_command(args)

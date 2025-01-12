@@ -1,6 +1,7 @@
 import sys
 import os
 from .utils import *
+import shlex
 
 
 class Shell:
@@ -13,7 +14,7 @@ class Shell:
                 "pwd": "pwd"
             },
             scripts=["cat"],
-            path=os.environ.get("PATH", ""),
+            path=os.environ.get("PATH", "")
         )
 
     def run(self):

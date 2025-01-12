@@ -28,6 +28,7 @@ class CommandHandler:
             self.cd_command(args)
         elif command == self.busybox["echo"]:
             args = [arg.strip("'") for arg in args]
+            args = [arg.strip('"') for arg in args]
 
             self.echo_command(args)
         elif command == self.busybox["type"]:
